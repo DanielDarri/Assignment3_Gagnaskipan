@@ -1,7 +1,7 @@
 #
 # Word frequency.
 # Your name:
-#  - <Add your name here>
+#  - <Daníel Darri Ragnarsson>
 #
 
 from my_dict import MyDict
@@ -19,8 +19,12 @@ def word_frequency_alphabetical_pydict(text):
     :param text: text to process
     :return: list of word frequencies
     """
-    # TO DO ...
-    return []
+    freq = {}
+    for word in text.lower().split():
+        word = ''.join(c for c in word if c.isalpha())
+        if word:
+            freq[word] = freq.get(word, 0) + 1
+    return sorted(freq.items())
 
 def word_frequency_alphabetical_mydict(text):
     """
@@ -30,8 +34,16 @@ def word_frequency_alphabetical_mydict(text):
     :param text: text to process
     :return: list of word frequencies
     """
-    # TO DO ...
-    return []
+    freq = MyDict()
+    for word in text.lower().split():
+        word = ''.join(c for c in word if c.isalpha())
+        if word:
+            freq[word] = freq.get(word, 0) + 1
+    
+    result = []
+    for key in freq:
+        result.append((key, freq[key]))
+    return result
 
 
 if __name__ == "__main__":
