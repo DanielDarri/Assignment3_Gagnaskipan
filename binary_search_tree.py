@@ -204,7 +204,13 @@ class BinarySearchTree(IBinarySearchTree):
         """
         Returns a list of all the (key, value) pairs in the tree, in an increasing order.
         """
-        return list(self)
+        result = []
+        node = self._first()
+        while node is not None:
+            result.append(node.pair)
+            node = self._after(node)
+        return result
+
 
     def clear(self):
         """
